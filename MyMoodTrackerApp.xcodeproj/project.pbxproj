@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FE87891C2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE87891A2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		FE8788CA2CF1FE730008EA9D /* MyMoodTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMoodTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE87891B2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyMoodTrackerApp.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		FE8788C12CF1FE730008EA9D = {
 			isa = PBXGroup;
 			children = (
+				FE87891A2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodeld */,
 				FE8788CC2CF1FE730008EA9D /* MyMoodTrackerApp */,
 				FE8788CB2CF1FE730008EA9D /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE87891C2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +331,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE87891A2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE87891B2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodel */,
+			);
+			currentVersion = FE87891B2CF213740008EA9D /* MyMoodTrackerApp.xcdatamodel */;
+			path = MyMoodTrackerApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FE8788C22CF1FE730008EA9D /* Project object */;
 }
