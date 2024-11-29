@@ -10,7 +10,8 @@ struct ContentView: View {
     
     @State private var showingAddEntry = false
     @State private var selectedEntry: MoodEntry? // For editing
-    @State private var navigateToMainPage = false // State to manage navigation to Main Page
+    @State private var showLogoutAlert = false // For logout confirmation
+    @State private var navigateToMainPage = false // For navigating to MainPageView after logout
 
     var body: some View {
         NavigationView {
@@ -53,28 +54,47 @@ struct ContentView: View {
                     showingAddEntry = true
                 }
                 .padding()
-                
-                // Button to trigger navigation to the Main Page
-                Button("Go to Main Page") {
-                    navigateToMainPage = true
-                }
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
             }
             .navigationTitle("My Mood Diary")
+            .navigationBarItems(leading: logoutButton) // Add logout button to the top left corner
             .sheet(isPresented: $showingAddEntry) {
                 AddEditMoodView(entryToEdit: selectedEntry)
             }
-            
-            // Use NavigationLink to navigate when the flag is set
+            .alert(isPresented: $showLogoutAlert) {
+                Alert(
+                    title: Text("Logout"),
+                    message: Text("Are you sure you want to logout?"),
+                    primaryButton: .destructive(Text("Logout")) {
+                        // Set the flag to navigate to the MainPageView
+                        navigateToMainPage = true
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+
+            // NavigationLink that triggers navigation to MainPageView when logged out
             .background(
-                NavigationLink(destination: MainPageView(showMainPage: .constant(true)), isActive: $navigateToMainPage) {
+                NavigationLink(
+                    destination: MainPageView(showMainPage: $navigateToMainPage),
+                    isActive: $navigateToMainPage
+                ) {
                     EmptyView()
                 }
                 .hidden()
             )
+        }
+    }
+
+    private var logoutButton: some View {
+        Button(action: {
+            showLogoutAlert = true // Show confirmation alert on logout
+        }) {
+            HStack {
+                Image(systemName: "arrow.backward.circle.fill") // Add a logout icon
+                Text("Logout")
+                    .fontWeight(.semibold)
+            }
+            .foregroundColor(.blue)
         }
     }
     
